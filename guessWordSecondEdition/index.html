@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Guess Word</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
     <div class="container">
-        <div class="game">
-            <h1 class="game__quote">Welcome to guess the word game</h1>
-            <div class="game__question">
-                This word means...
-            </div>
-            <div class="game__explanation"></div>
-            <div class="game__word"></div>
-
-            <button class="game__btn">GENERATE</button>
-
-            <div class="game__letters"></div>
+        <div>
+            <label id="hint"></label><br>
+            <input type="text" id="secret" size="20" readonly>
+        </div>
+        <div>
+            <input type="text" id="letter" size="3" maxlength="1">
+            <button id="tryit">Check letter</button>
+        </div>
+        <div id="result">
+            <label>Number of attempt</label><br>
+            <input type="text" id="numretries" size="5" value="0" readonly>
+            <button id="again">One more time?</button>
         </div>
     </div>
+
 <script src="script.js"></script>
 </body>
 </html>

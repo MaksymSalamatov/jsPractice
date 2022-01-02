@@ -1,12 +1,16 @@
-body{
-    background: black;
+input {
+    font-size: 1.3em;
+    padding: 3px;
+    border: 1px solid #999;
+    border-radius: 5px;
 }
 
 .container{
     margin: 0 auto;
-    max-width: 600px;
-    width: 100%;
-    height: 100%;
+    max-width: 500px;
     text-align: center;
-    color: grey;
+}
+
+div{
+    margin-bottom: 20px;
 }
