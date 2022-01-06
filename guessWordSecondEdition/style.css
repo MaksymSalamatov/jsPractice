@@ -5,12 +5,10 @@ input {
     border-radius: 5px;
 }
 
-.container{
-    margin: 0 auto;
-    max-width: 500px;
-    text-align: center;
+div{
+    margin-bottom: 10px;
 }
 
-div{
-    margin-bottom: 20px;
+input{
+    margin-top: 10px;
 }
