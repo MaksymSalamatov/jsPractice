@@ -1,0 +1,29 @@
+.cover{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.coverOfElementsNames, .coverOfElementsUsersName{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.elements{
+    border:1px solid green;
+    margin: 10px 0;
+    min-width: 170px;
+    text-align: center;
+}
+
+
+.coverCard{
+    border: 1px solid rebeccapurple;
+    height: content-box;
+}
+
+.coverItems{
+    padding: 5px 10px;
+}

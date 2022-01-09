@@ -8,7 +8,9 @@ class Game {
         this.result = document.querySelector('.game-block__result');
         this.scoreAndCounter = document.querySelector('.game-block__score');
         this.gift = document.querySelector('.game-block__gift');
+        this.checkWin = this.checkWin.bind(this)
         this.welcomeGame();
+
     }
 
     welcomeGame() {
@@ -23,13 +25,11 @@ class Game {
     }
 
     startGameSession(){
-        console.log(this.score, 'score1')
         this.num1 = this.getRandomNumber();
         this.num2 = this.getRandomNumber();
         this.num3 = this.getRandomNumber();
 
         if(this.num1 !== this.num2 && this.num1 !== this.num3 && this.num2 !== this.num3) {
-            console.log(this.score, 'score2')
             this.numberOneBtn.innerHTML = this.num1;
             this.numberTwoBtn.innerHTML = this.num2;
             this.numberThreeBtn.innerHTML = this.num3;
@@ -39,37 +39,41 @@ class Game {
             console.log('rightNum: ', this.rightNum);
             this.checkButtons()
         } else{
-            this.startGameSession()
+            this.startGameSession();
         }
     }
 
     getRandomNumber() {
-        this.randomNumber = Math.random() * 10;
-        this.clearNum = Math.round(this.randomNumber);
+        let randomNumber = Math.random() * 10;
+        this.clearNum = Math.round(randomNumber);
         return this.clearNum;
     }
 
     checkButtons(){
-        console.log(this.score, 'score3')
         this.checkNumbersButtons.forEach(item => {
-            item.addEventListener('click', () => {
-                this.guessedNumberAsString = item.querySelector('.game-block__item').childNodes[0].nodeValue;
-                this.guessedNumber = parseInt(this.guessedNumberAsString);
-                if (this.guessedNumber === this.rightNum) {
-                    this.result.innerHTML = 'win';
-                    this.counter++;
-                    this.score++;
-                } else {
-                    this.result.innerHTML = 'loose';
-                }
-                this.scoreAndCounter.innerHTML = this.counter + " : " + this.score;
-                if (this.counter === this.MAX_SESSIONS) {
-                    this.finishGame();
-                } else {
-                    this.startGameSession();
-                }
-            });
+            item.addEventListener('click', this.checkWin);
         });
+    }
+
+    checkWin() {
+        this.guessedNumber = parseInt(event.target.innerText)
+        if (this.guessedNumber === this.rightNum) {
+            this.result.innerHTML = 'win';
+            this.score += 1;
+            this.startGameSession()
+        } else {
+            this.result.innerHTML = 'loose';
+            this.startGameSession()
+        }
+
+        this.counter++;
+        this.scoreAndCounter.innerHTML = this.counter + " : " + this.score;
+        if (this.counter === this.MAX_SESSIONS) {
+            this.finishGame();
+        } else {
+            this.startGameSession.bind(this);
+        }
+
     }
 
     finishGame() {
@@ -77,8 +81,8 @@ class Game {
             e.stopPropagation();
             e.preventDefault();
         }, true);
-        this.timeEnd = Date.now() - this.timeStart;
-        return this.gift.innerHTML = `You just spent ${this.timeEnd} milliseconds of your life ))`;
+        let timeEnd = Date.now() - this.timeStart;
+        return this.gift.innerHTML = `You just spent ${timeEnd} milliseconds of your life ))`;
     }
 }
 
