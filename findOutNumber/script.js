@@ -1,3 +1,5 @@
+// create class which create game where you should find out number
+
 class Game {
     constructor() {
         this.startGameBtn = document.querySelector('.game-block__btn');
